@@ -16,7 +16,7 @@ debug: ./dbg/output
 	gdb ./dbg/output
 
 ./dbg/output: ./dbg main.c
-	gcc main.c -o ./dbg/output -Wall -Werror -g
+	gcc main.c -o ./dbg/output -Wall -Werror -g -lrt -lpthread
 
 ./rls:
 	mkdir ./rls
