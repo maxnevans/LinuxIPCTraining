@@ -95,7 +95,7 @@ int main(int argc, char* argv[], char** envp)
         {
             // Root process
             signal(SIGUSR1, root_sigusr1);
-            //signal(SIGUSR1, SIG_IGN);
+            signal(SIGUSR2, SIG_IGN);
             pids[0] = getpid();
 
             pid_t grp = getpgrp();
@@ -119,6 +119,11 @@ int main(int argc, char* argv[], char** envp)
                         printf("%s\n", buffer);
                         count_read++;
                     }
+                    else
+                    {
+                        break;
+                    }
+                    
                 }
                 offset = lseek(shared_file, 0, SEEK_CUR);
                 lseek(shared_file, 0, SEEK_END);
